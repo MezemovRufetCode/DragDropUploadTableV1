@@ -29,6 +29,19 @@ function showImage(file) {
     let tableRow = document.createElement("tr");
     myTable.append(tableRow);
     tableRow.classList.add = "tableRow";
+
+    //Rowun indexi
+    // let indexDt = document.createElement("td");
+    // tableRow.append(indexDt);
+    // var x = document.getElementsByTagName("tr");
+    // var txt = "";
+    // var i;
+    // for (i = -1; i < x.length - 1; i++) {
+    //   txt = i + 1;
+    // }
+    // indexDt.append(txt);
+    // indexDt.className = "col-sm-1 border";
+
     //Data-imagein ozu
     let imageTd = document.createElement("td");
     tableRow.append(imageTd);
@@ -38,13 +51,14 @@ function showImage(file) {
     img.src = fileReader.result;
     img.style.width = "100%";
     img.style.height = "110px";
+    img.style.objectFit = "contain";
     imageTd.append(img);
 
     //Data-image size
     let sizeDt = document.createElement("td");
     tableRow.append(sizeDt);
     let filesize = (file.size / 1024).toFixed(2);
-    sizeDt.append(filesize);
+    sizeDt.append(filesize + " " + "Kb");
     sizeDt.className = "col-sm-3 border";
 
     //Data- image type
@@ -60,10 +74,8 @@ function showImage(file) {
     deleteTd.className = "col-sm-3 border";
     let btn = document.createElement("button");
     btn.className = "btn btn-outline-danger";
-    btn.innerHTML = "Delete";
+    btn.innerHTML = "Delete <i class='fas fa-trash-alt'></i>";
     deleteTd.append(btn);
-
-    tableRow.classList.add = "tableRow";
     // Confirm + delete
     btn.onclick = function () {
       let confDel = confirm(
@@ -73,6 +85,10 @@ function showImage(file) {
         tableRow.remove();
       }
     };
+
+    // if(){
+    //   myTable.classList.add("d-none");
+    // }
   });
 }
 

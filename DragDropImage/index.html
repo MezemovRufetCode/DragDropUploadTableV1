@@ -15,12 +15,12 @@
 
 <body>
     <div class="container">
-        <div class="row images">
+        <div class="row images justify-content-center">
             <div class="dropArea">
                 <div class="addInput form-control d-none">
                     <input type="file" multiple accept="image/*" id="addInput">
                 </div>
-                <div class="adding">
+                <div class="adding ">
                     <div class="desc">
                         <p>Drag&Drop files</p>
                         <p>or</p>
@@ -31,9 +31,10 @@
                 </div>
             </div>
 
-            <div class="myList">
-                <table style="width:100%" class="MyTable d-none mt-5">
+            <div class="myList d-flex flex-column align-items-center">
+                <table style="width:90%" class="MyTable d-none mt-5 text-center">
                     <tr>
+                        <!-- <th>#</th> -->
                         <th>Image</th>
                         <th>Image size</th>
                         <th>Image type</th>
