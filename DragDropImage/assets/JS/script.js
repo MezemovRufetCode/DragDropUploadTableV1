@@ -32,19 +32,23 @@ function showImage(file) {
     tableRow.classList.add = "tableRow";
 
     //Rowun indexi
-    // let indexDt = document.createElement("td");
-    // tableRow.append(indexDt);
-    // var x = document.getElementsByTagName("tr");
-    // var txt = "";
-    // var i;
-    // for (i = -1; i < x.length - 1; i++) {
-    //   txt = i + 1;
-    // }
-    // indexDt.append(txt);
-    // indexDt.className = "col-sm-1 border";
+    let indexDt = document.createElement("td");
+    tableRow.append(indexDt);
+    var allRows = document.getElementsByTagName("tr");
+    var txt = "";
+    for (var i = -1; i < allRows.length - 1; i++) {
+      txt = i + 1;
+    }
+    let testP = document.createElement("p");
+    indexDt.append(testP);
+    // testP.append(txt);
+    testP.innerHTML = txt;
+    indexDt.className = "col-sm-1 border pt-5";
 
     //Data-imagein ozu
     let imageTd = document.createElement("td");
+    let imgLink = document.createElement("a");
+    imgLink.setAttribute("href", "https://www.google.az/"); //test meqsedlidir.
     tableRow.append(imageTd);
     imageTd.className = "col-sm-3 border";
 
@@ -53,7 +57,8 @@ function showImage(file) {
     img.style.width = "100%";
     img.style.height = "110px";
     img.style.objectFit = "contain";
-    imageTd.append(img);
+    imageTd.append(imgLink);
+    imgLink.append(img);
 
     //Data-image size
     let sizeDt = document.createElement("td");

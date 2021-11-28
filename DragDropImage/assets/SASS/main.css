@@ -35,4 +35,12 @@
 .dropArea .adding .addFilebtn {
   margin-top: 10px;
 }
+
+p {
+  font-weight: bold;
+}
+
+th {
+  font-size: 17px;
+}
 /*# sourceMappingURL=main.css.map */
