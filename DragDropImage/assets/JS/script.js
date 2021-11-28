@@ -26,8 +26,9 @@ function showImage(file) {
     //Table & table row
     let myTable = document.querySelector(".MyTable");
     myTable.classList.remove("d-none");
+    let tableBody = document.querySelector(".tableBody");
     let tableRow = document.createElement("tr");
-    myTable.append(tableRow);
+    tableBody.append(tableRow);
     tableRow.classList.add = "tableRow";
 
     //Rowun indexi
@@ -59,36 +60,40 @@ function showImage(file) {
     tableRow.append(sizeDt);
     let filesize = (file.size / 1024).toFixed(2);
     sizeDt.append(filesize + " " + "Kb");
-    sizeDt.className = "col-sm-3 border";
+    sizeDt.className = "col-sm-3 border pt-5";
 
     //Data- image type
     let typeTd = document.createElement("td");
     tableRow.append(typeTd);
     let filetype = file.type;
     typeTd.append(filetype);
-    typeTd.className = "col-sm-3 border";
+    typeTd.className = "col-sm-3 border pt-5";
 
     // Data-delete button
     let deleteTd = document.createElement("td");
     tableRow.append(deleteTd);
-    deleteTd.className = "col-sm-3 border";
+    deleteTd.className = "col-sm-3 border pt-5";
     let btn = document.createElement("button");
     btn.className = "btn btn-outline-danger";
-    btn.innerHTML = "Delete <i class='fas fa-trash-alt'></i>";
+    btn.innerHTML = "Delete  <i class='fas fa-trash-alt'></i>";
     deleteTd.append(btn);
+
     // Confirm + delete
     btn.onclick = function () {
+      //td elementlerin countunu tapiram
+      var tdcount = document.getElementsByTagName("td").length;
+      // console.log(tds);
       let confDel = confirm(
         "Are you sure you want to permanently delete this item ?"
       );
       if (confDel) {
         tableRow.remove();
       }
+      //rowu sildikce sayi azalir,4 standart olaraq thead e gore var
+      if (tdcount == 4) {
+        myTable.classList.add("d-none");
+      }
     };
-
-    // if(){
-    //   myTable.classList.add("d-none");
-    // }
   });
 }
 
@@ -97,11 +102,18 @@ chooseBtn.onclick = function () {
   addInput.click();
 };
 
-//Drop
+//Drop & change area color
 dropArea.addEventListener("dragover", (e) => {
+  dropArea.style.backgroundColor = "rgb(189, 184, 184)";
   e.preventDefault();
 });
 
+dropArea.addEventListener("dragleave", () => {
+  dropArea.style.backgroundColor = "rgb(224, 223, 223)";
+});
+dropArea.addEventListener("mouseleave", () => {
+  dropArea.style.backgroundColor = "rgb(224, 223, 223)";
+});
 dropArea.addEventListener("drop", (e) => {
   e.preventDefault();
   let files = Array.from(e.dataTransfer.files);
