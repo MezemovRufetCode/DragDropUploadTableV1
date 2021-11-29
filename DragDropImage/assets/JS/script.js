@@ -94,8 +94,8 @@ function showImage(file) {
       if (confDel) {
         tableRow.remove();
       }
-      //rowu sildikce sayi azalir,4 standart olaraq thead e gore var
-      if (tdcount == 4) {
+      //rowu sildikce sayi azalir,5 standart olaraq thead e gore var
+      if (tdcount == 5) {
         myTable.classList.add("d-none");
       }
     };
